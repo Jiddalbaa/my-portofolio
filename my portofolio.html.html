@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al Baqir · portfolio & projects</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f5fa;
+      color: #1e293b;
+    }
+
+    body.dark-mode {
+      background: #121826;
+      color: #e0e7ff;
+    }
+
+    .card {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: #ffffffdd;
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 30, 50, 0.25);
+      padding: 2.5rem 2.2rem;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    body.dark-mode .card {
+      background: #1e263ad9;
+      backdrop-filter: blur(15px);
+      border-color: #334155;
+      box-shadow: 0 25px 40px -12px #030614;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .icon-btn {
+      background: #ecf3f7;
+      border: 1px solid #cbd9e6;
+      border-radius: 40px;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: #1e293b;
+      transition: 0.15s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      user-select: none;
+    }
+
+    body.dark-mode .icon-btn {
+      background: #2b364f;
+      border-color: #475569;
+      color: #e2e8f0;
+    }
+
+    .icon-btn:hover {
+      background: #dde9f2;
+      transform: scale(1.02);
+    }
+    body.dark-mode .icon-btn:hover {
+      background: #3e4b66;
+    }
+
+    .profile-pic {
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(145deg, #d9e2ef, #cbd5e1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      border: 4px solid white;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.02);
+    }
+    body.dark-mode .profile-pic {
+      border-color: #1e2b3c;
+      background: #2d3b4f;
+    }
+    .initials {
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    body.dark-mode .initials {
+      color: #b7c9e2;
+    }
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
+      color: #0f172a;
+    }
+    body.dark-mode h1 {
+      color: #f1f5f9;
+    }
+    .subhead {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #475569;
+      margin-bottom: 1.2rem;
+      border-left: 4px solid #5f9ea0;
+      padding-left: 1rem;
+      background: #f8fafc;
+      border-radius: 0 8px 8px 0;
+      padding: 0.6rem 1rem;
+    }
+    body.dark-mode .subhead {
+      background: #283249;
+      color: #b0c4de;
+      border-left-color: #78b9bd;
+    }
+    .bio {
+      font-size: 1rem;
+      background: #f1f5f9;
+      padding: 1.1rem 1.4rem;
+      border-radius: 1.8rem;
+      margin: 1.5rem 0 1.8rem 0;
+      border: 1px solid #e2e8f0;
+      font-weight: 400;
+    }
+    body.dark-mode .bio {
+      background: #232e41;
+      border-color: #3b4a5e;
+      color: #cdddf5;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      margin: 1.8rem 0 2rem 0;
+      background: #f1f5f9;
+      padding: 1.2rem 1.5rem;
+      border-radius: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+    body.dark-mode .contact-grid {
+      background: #253040;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.98rem;
+      background: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid #e9edf2;
+    }
+    body.dark-mode .contact-item {
+      background: #1f2a3c;
+      border-color: #3d5068;
+      color: #d2defc;
+    }
+    .contact-item i {
+      font-size: 1.1rem;
+      color: #4b6a7c;
+    }
+    body.dark-mode .contact-item i {
+      color: #94a3b8;
+    }
+    .contact-item a, .contact-item span {
+      text-decoration: none;
+      color: #1e293b;
+      font-weight: 500;
+    }
+    body.dark-mode .contact-item a {
+      color: #d1dffa;
+    }
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      justify-content: center;
+      margin: 1.5rem 0 2.2rem 0;
+    }
+    .social-btn {
+      background: white;
+      border: 1px solid #dee7ef;
+      border-radius: 50px;
+      padding: 0.5rem 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      color: #2c3e50;
+      transition: 0.15s;
+      font-size: 0.95rem;
+    }
+    body.dark-mode .social-btn {
+      background: #253040;
+      border-color: #3b5068;
+      color: #cfdff5;
+    }
+    .social-btn:hover {
+      background: #e6f0f6;
+      transform: translateY(-2px);
+    }
+    body.dark-mode .social-btn:hover {
+      background: #31475f;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 1.4rem;
+      margin: 2rem 0 1.2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #1e3f4e;
+    }
+    body.dark-mode .section-title {
+      color: #acd0f0;
+    }
+    .section-title i {
+      color: #5f9ea0;
+      font-size: 1.5rem;
+    }
+
+    .skills-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .skill-chip {
+      background: #ecf3f7;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1a3845;
+      border: 1px solid #d0e0eb;
+    }
+    body.dark-mode .skill-chip {
+      background: #26344b;
+      border-color: #425973;
+      color: #bed9ff;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0 1rem;
+    }
+    .project-card {
+      background: #ffffffd0;
+      border-radius: 2rem;
+      padding: 1.3rem 1.3rem 1.6rem;
+      border: 1px solid #dde7f0;
+      box-shadow: 0 6px 14px rgba(0, 20, 30, 0.05);
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    body.dark-mode .project-card {
+      background: #232f42;
+      border-color: #3b5068;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: #98b8d0;
+      box-shadow: 0 15px 25px -8px #1e293b30;
+    }
+    .project-image {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 1.2rem;
+      margin-bottom: 0.8rem;
+      border: 2px solid #e2e8f0;
+    }
+    .project-icon {
+      font-size: 2.2rem;
+      background: #e5f0f7;
+      width: 55px;
+      height: 55px;
+      border-radius: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: #3d6879;
+    }
+    body.dark-mode .project-icon {
+      background: #314e68;
+      color: #bedcff;
+    }
+    .project-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .project-desc {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .project-tag {
+      background: #e5ecf3;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: #204b5a;
+    }
+    body.dark-mode .project-tag {
+      background: #344b63;
+      color: #b8d6fc;
+    }
+    .delete-project {
+      align-self: flex-end;
+      background: none;
+      border: 1px solid #cfbebe;
+      border-radius: 30px;
+      padding: 0.3rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #6d4c4c;
+      cursor: pointer;
+      transition: 0.1s;
+      margin-top: 0.3rem;
+    }
+    body.dark-mode .delete-project {
+      border-color: #5e6e82;
+      color: #e0b3b3;
+    }
+    .delete-project:hover {
+      background: #fce4e4;
+      border-color: #b38b8b;
+    }
+
+    .add-project-form {
+      background: #f4fafd;
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      margin: 1.8rem 0 1rem;
+      border: 1px solid #d2e3f0;
+    }
+    body.dark-mode .add-project-form {
+      background: #1e2d40;
+      border-color: #405872;
+    }
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-end;
+    }
+    .form-group {
+      flex: 1 1 180px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #34657a;
+    }
+    body.dark-mode .form-group label {
+      color: #99c1de;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border-radius: 40px;
+      border: 1px solid #c1d9e8;
+      background: white;
+      font-size: 0.9rem;
+    }
+    body.dark-mode .form-group input {
+      background: #293a50;
+      border-color: #50647b;
+      color: white;
+    }
+    .form-group input[type="file"] {
+      padding: 0.4rem 0.8rem;
+    }
+    .image-preview {
+      margin-top: 8px;
+      max-width: 100px;
+      display: none;
+    }
+    .image-preview img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+    }
+    .btn-add {
+      background: #5f9ea0;
+      border: none;
+      padding: 0.7rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      border: 1px solid #49878a;
+    }
+    .btn-add:hover {
+      background: #4f8688;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6a7d8c;
+      border-top: 1px dashed #cbd9e6;
+      padding-top: 1.8rem;
+    }
+    body.dark-mode .footer-note {
+      border-color: #334155;
+      color: #8fa3bc;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="mainCard">
+    <!-- top bar: dark mode & language -->
+    <div class="top-bar">
+      <div class="icon-btn" id="darkModeToggle">
+        <i class="fas fa-moon"></i> <span id="darkModeText">Dark mode</span>
+      </div>
+      <div class="icon-btn" id="langToggle">
+        <i class="fas fa-language"></i> <span id="langText">English</span>
+      </div>
+    </div>
+
+    <!-- profile -->
+    <div class="profile-pic">
+      <span class="initials">M⚡A</span>
+    </div>
+    <h1 data-i18n="name">Muhammad Abdul Majid Al Baqir</h1>
+    <div class="subhead" data-i18n="subhead">
+      <i class="fas fa-graduation-cap" style="margin-right: 8px;"></i> D3 Teknik Industri · Otomasi Industri
+    </div>
+    <div class="bio" data-i18n="bio">
+      <i class="fas fa-quote-left"></i> Sangat suka pemrograman, PLC, machine learning, coding, IoT, dan semangat belajar tinggi. 
+      Aktif memperbaiki & memprogram robot industri (Shibaura, Epson, Fanuc).
+    </div>
+
+    <!-- kontak -->
+    <div class="contact-grid">
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:albaqirmajid@gmail.com">albaqirmajid@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone-alt"></i>
+        <a href="tel:0888150551">0888 150 551</a>
+      </div>
+    </div>
+
+    <!-- social media -->
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/mabdulmajidalbaqir01/" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+      <a href="https://instagram.com/m.adjiealba" target="_blank" class="social-btn"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="mailto:albaqirmajid@gmail.com" class="social-btn"><i class="fas fa-envelope"></i> Email</a>
+      <a href="tel:0888150551" class="social-btn"><i class="fas fa-phone-alt"></i> Telepon</a>
+    </div>
+
+    <!-- SKILL SECTION -->
+    <div class="section-title"><i class="fas fa-code"></i> <span data-i18n="techToolkit">technical toolkit</span></div>
+    <!-- programming -->
+    <div style="margin-bottom: 1.5rem;">
+      <div style="font-weight:600; margin-bottom:0.7rem; opacity:0.8;"><i class="fas fa-microchip"></i> <span data-i18n="progIoT">programming & IoT</span></div>
+      <div class="skills-wrapper">
+        <span class="skill-chip">C++</span><span class="skill-chip">Python</span><span class="skill-chip">HTML5</span><span class="skill-chip">CSS3</span>
+        <span class="skill-chip">JavaScript</span><span class="skill-chip">Arduino</span><span class="skill-chip">ESP32</span><span class="skill-chip">ESP8266</span>
+        <span class="skill-chip">PLC</span><span class="skill-chip">Machine Learning</span>
+      </div>
+    </div>
+    <!-- design -->
+    <div style="margin-bottom: 1.5rem;">
+      <div style="font-weight:600; margin-bottom:0.7rem; opacity:0.8;"><i class="fas fa-pencil-ruler"></i> <span data-i18n="designTools">design & tools</span></div>
+      <div class="skills-wrapper">
+        <span class="skill-chip">Figma</span><span class="skill-chip">Adobe Illustrator</span><span class="skill-chip">Canva</span>
+      </div>
+    </div>
+    <!-- robot -->
+    <div style="margin-bottom: 1.5rem;">
+      <div style="font-weight:600; margin-bottom:0.7rem; opacity:0.8;"><i class="fas fa-robot"></i> <span data-i18n="robotAuto">robot & otomasi industri</span></div>
+      <div class="skills-wrapper">
+        <span class="skill-chip">Shibaura</span><span class="skill-chip">Epson</span><span class="skill-chip">Fanuc</span>
+        <span class="skill-chip"><span data-i18n="repair">perbaikan mesin</span></span><span class="skill-chip">robot arm</span>
+      </div>
+    </div>
+
+    <!-- LIFE PROJECTS SECTION -->
+    <div class="section-title"><i class="fas fa-project-diagram"></i> <span data-i18n="lifeProjects">⚡ life projects</span></div>
+
+    <!-- grid proyek -->
+    <div id="projectsContainer" class="projects-grid"></div>
+
+    <!-- form tambah proyek dengan upload gambar -->
+    <div class="add-project-form">
+      <div style="font-weight:600; margin-bottom:1rem;" data-i18n="addNewProject">➕ tambah proyek baru</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="projectName">nama proyek</label>
+          <input type="text" id="projectNameInput" placeholder="ex: IoT Smart Farm">
+        </div>
+        <div class="form-group">
+          <label data-i18n="shortDesc">deskripsi singkat</label>
+          <input type="text" id="projectDescInput" placeholder="Monitoring suhu dengan ESP32">
+        </div>
+        <div class="form-group">
+          <label data-i18n="tags">tags (pisahkan koma)</label>
+          <input type="text" id="projectTagsInput" placeholder="IoT, ESP32, sensor">
+        </div>
+        <div class="form-group" style="flex:1 1 200px;">
+          <label data-i18n="projectImage">gambar proyek (opsional)</label>
+          <input type="file" id="projectImageInput" accept="image/*">
+          <div id="imagePreview" class="image-preview">
+            <img src="" alt="preview">
+          </div>
+        </div>
+        <button class="btn-add" id="addProjectBtn"><i class="fas fa-plus"></i> <span data-i18n="add">tambah</span></button>
+      </div>
+      <p style="font-size:0.75rem; margin-top:0.8rem; opacity:0.7;"><i class="far fa-save"></i> <span data-i18n="localSave">proyek tersimpan di browser kamu (localStorage)</span></p>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+      <i class="fas fa-crown" style="opacity: 0.5;"></i>  <span data-i18n="footerName">Muhammad Abdul Majid Al Baqir</span> · <span data-i18n="footerDesc">portofolio adaptif</span> <br>
+      <span style="font-size: 0.8rem;" data-i18n="footerSmall">siap berkolaborasi & terus belajar</span>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const translations = {
+        id: {
+          name: "Muhammad Abdul Majid Al Baqir",
+          subhead: "D3 Teknik Industri · Otomasi Industri",
+          bio: "⚡ Sangat suka pemrograman, PLC, machine learning, coding, IoT, dan semangat belajar tinggi. Aktif memperbaiki & memprogram robot industri (Shibaura, Epson, Fanuc).",
+          techToolkit: "perangkat teknis",
+          progIoT: "pemrograman & IoT",
+          designTools: "desain & tools",
+          robotAuto: "robot & otomasi industri",
+          repair: "perbaikan mesin",
+          lifeProjects: "⚡ life projects",
+          addNewProject: "➕ tambah proyek baru",
+          projectName: "nama proyek",
+          shortDesc: "deskripsi singkat",
+          tags: "tags (pisahkan koma)",
+          projectImage: "gambar proyek (opsional)",
+          add: "tambah",
+          localSave: "proyek tersimpan di browser kamu (localStorage)",
+          footerName: "Muhammad Abdul Majid Al Baqir",
+          footerDesc: "portofolio adaptif",
+          footerSmall: "siap berkolaborasi & terus belajar",
+          darkMode: "Mode gelap",
+          lightMode: "Mode terang",
+          langEn: "English",
+          langId: "Indonesia"
+        },
+        en: {
+          name: "Muhammad Abdul Majid Al Baqir",
+          subhead: "Diploma in Industrial Engineering · Industrial Automation",
+          bio: "⚡ Passionate about programming, PLC, machine learning, coding, IoT, and high learning enthusiasm. Actively repair & program industrial robots (Shibaura, Epson, Fanuc).",
+          techToolkit: "technical toolkit",
+          progIoT: "programming & IoT",
+          designTools: "design & tools",
+          robotAuto: "robots & industrial automation",
+          repair: "machine repair",
+          lifeProjects: "⚡ life projects",
+          addNewProject: "➕ add new project",
+          projectName: "project name",
+          shortDesc: "short description",
+          tags: "tags (comma separated)",
+          projectImage: "project image (optional)",
+          add: "add",
+          localSave: "projects saved in your browser (localStorage)",
+          footerName: "Muhammad Abdul Majid Al Baqir",
+          footerDesc: "adaptive portfolio",
+          footerSmall: "ready to collaborate & always learning",
+          darkMode: "Dark mode",
+          lightMode: "Light mode",
+          langEn: "English",
+          langId: "Indonesia"
+        }
+      };
+
+      let currentLang = 'id';
+      let isDark = false;
+      let selectedImageBase64 = null;
+
+      function translatePage() {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[currentLang][key]) {
+            if (el.classList.contains('bio') || el.classList.contains('subhead')) {
+              const icon = el.querySelector('i');
+              if (icon) {
+                const iconHTML = icon.outerHTML;
+                el.innerHTML = iconHTML + ' ' + translations[currentLang][key];
+              } else {
+                el.innerText = translations[currentLang][key];
+              }
+            } else {
+              el.innerText = translations[currentLang][key];
+            }
+          }
+        });
+        document.getElementById('darkModeText').innerText = isDark ? translations[currentLang].lightMode : translations[currentLang].darkMode;
+        document.getElementById('langText').innerText = currentLang === 'id' ? translations[currentLang].langEn : translations[currentLang].langId;
+        // Update placeholder
+        document.getElementById('projectNameInput').placeholder = currentLang === 'id' ? 'ex: IoT Smart Farm' : 'e.g., IoT Smart Farm';
+        document.getElementById('projectDescInput').placeholder = currentLang === 'id' ? 'Monitoring suhu dengan ESP32' : 'Temperature monitoring with ESP32';
+        document.getElementById('projectTagsInput').placeholder = currentLang === 'id' ? 'IoT, ESP32, sensor' : 'IoT, ESP32, sensor';
+      }
+
+      const darkToggle = document.getElementById('darkModeToggle');
+      darkToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        isDark = document.body.classList.contains('dark-mode');
+        document.getElementById('darkModeText').innerText = isDark ? translations[currentLang].lightMode : translations[currentLang].darkMode;
+      });
+
+      const langToggle = document.getElementById('langToggle');
+      langToggle.addEventListener('click', () => {
+        currentLang = currentLang === 'id' ? 'en' : 'id';
+        translatePage();
+      });
+
+      const imageInput = document.getElementById('projectImageInput');
+      const previewDiv = document.getElementById('imagePreview');
+      const previewImg = previewDiv.querySelector('img');
+      imageInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(ev) {
+            selectedImageBase64 = ev.target.result;
+            previewImg.src = selectedImageBase64;
+            previewDiv.style.display = 'block';
+          };
+          reader.readAsDataURL(file);
+        } else {
+          selectedImageBase64 = null;
+          previewDiv.style.display = 'none';
+        }
+      });
+
+      let projects = [];
+
+      function loadProjects() {
+        const stored = localStorage.getItem('portfolioProjects');
+        if (stored) {
+          try { projects = JSON.parse(stored); } catch { projects = []; }
+        } else {
+          // Default projects
+          projects = [
+            { 
+              name: 'PT Java Global Otomasi', 
+              desc: 'Solusi Otomasi Industri Terdepan. Sistem kontrol, integrasi teknologi, konsultasi & pemeliharaan.', 
+              tags: ['Otomasi Industri', 'Sistem Kontrol', 'Integrasi Teknologi'],
+              image: null 
+            },
+            { name: 'IoT Greenhouse', desc: 'Monitoring suhu & kelembaban dengan ESP32', tags: ['IoT','ESP32','Sensor'], image: null },
+            { name: 'PLC Conveyor', desc: 'Sortir barang menggunakan PLC Omron', tags: ['PLC','Otomasi'], image: null },
+            { name: 'Robot Arm Fanuc', desc: 'Programming pick-and-place dengan Fanuc', tags: ['Robot','Fanuc'], image: null }
+          ];
+        }
+        renderProjects();
+      }
+
+      function renderProjects() {
+        const container = document.getElementById('projectsContainer');
+        container.innerHTML = '';
+        projects.forEach((proj, index) => {
+          const card = document.createElement('div');
+          card.className = 'project-card';
+          
+          let imageHtml = '';
+          if (proj.image) {
+            imageHtml = `<img src="${proj.image}" class="project-image" alt="project image">`;
+          } else {
+            const icons = ['fa-microchip','fa-robot','fa-code-branch','fa-cogs','fa-project-diagram'];
+            const iconRand = icons[index % icons.length];
+            imageHtml = `<div class="project-icon"><i class="fas ${iconRand}"></i></div>`;
+          }
+
+          card.innerHTML = `
+            ${imageHtml}
+            <div class="project-title">${proj.name}</div>
+            <div class="project-desc">${proj.desc}</div>
+            <div class="project-tags">${proj.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}</div>
+            <button class="delete-project" data-index="${index}"><i class="far fa-trash-alt"></i> hapus</button>
+          `;
+          container.appendChild(card);
+        });
+        document.querySelectorAll('.delete-project').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const idx = e.currentTarget.getAttribute('data-index');
+            projects.splice(idx, 1);
+            saveAndRender();
+          });
+        });
+      }
+
+      function saveAndRender() {
+        localStorage.setItem('portfolioProjects', JSON.stringify(projects));
+        renderProjects();
+      }
+
+      document.getElementById('addProjectBtn').addEventListener('click', () => {
+        const name = document.getElementById('projectNameInput').value.trim();
+        const desc = document.getElementById('projectDescInput').value.trim();
+        const tagsStr = document.getElementById('projectTagsInput').value.trim();
+        if (!name) {
+          alert(currentLang === 'id' ? 'Nama proyek harus diisi' : 'Project name is required');
+          return;
+        }
+        const tags = tagsStr ? tagsStr.split(',').map(t => t.trim()).filter(t => t) : ['umum'];
+        
+        const newProject = {
+          name,
+          desc,
+          tags,
+          image: selectedImageBase64 || null
+        };
+        projects.push(newProject);
+        saveAndRender();
+
+        // Reset form
+        document.getElementById('projectNameInput').value = '';
+        document.getElementById('projectDescInput').value = '';
+        document.getElementById('projectTagsInput').value = '';
+        imageInput.value = '';
+        selectedImageBase64 = null;
+        previewDiv.style.display = 'none';
+      });
+
+      loadProjects();
+      translatePage();
+    })();
+  </script>
+</body>
+</html>
